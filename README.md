@@ -1,45 +1,33 @@
-# ConquerDX9.Hook
+# Conquer Online DX9 Hook
 
-DirectX9 hooking for Conquer Online with ImGui overlay
+DirectX 9 hooking for Conquer Online with an ImGui overlay
 
-![Preview](img/img.png)
+## How does it work?
 
-## Info
+The DLL uses MinHook for function hooking and ImGui for the overlay. Press INSERT to toggle it.
 
-- Tested on Conquer Online game versions
-- Compile on Release & x86
-- Uses MinHook for function hooking
-- ImGui overlay (toggle with INSERT key)
-- Features: Always Jump, Wireframe/Chams, String modification
+The overlay includes Always Jump, Wireframe/Chams, and string modification. For version 6609, it loads through a `Chat.dll` proxy.
+
+## Demo
+
+![DX9 hook demo](img/img.png)
 
 ## Building
 
-1. Select Release configuration and x86 platform
-2. Build the solution
-3. Output: `Release/Chat.dll`
+Build the solution in Release / x86. Output: `Release/Chat.dll`.
 
 ## Usage
 
-### Version 6609 (Proxy Method)
+For version 6609:
 
-1. Rename original `Chat.dll` to `OChat.dll` in the game'folder
-2. Copy compiled `Chat.dll` to the same folder
-3. Launch the game (no injector needed)
-4. Press INSERT to toggle ImGui interface
+1. Rename the original `Chat.dll` to `OChat.dll` in the game folder.
+2. Copy the compiled `Chat.dll` into the same folder.
+3. Launch the game and press INSERT.
 
-### Other Versions (DLL Injection)
-
-1. Remove proxy code from `src/hooks/proxy.cpp` and `src/dllmain.cpp`
-2. Compile as regular DLL
-3. Inject the DLL into the game process
-4. Press INSERT to toggle ImGui interface
+For other versions, remove the proxy code from `src/hooks/proxy.cpp` and `src/dllmain.cpp`, build as a regular DLL, and load it through DLL injection.
 
 ## Credits
 
-Based on examples and concepts from [co-stuff/posts](https://github.com/co-stuff/posts)
+Based on examples and concepts from [co-stuff/posts](https://github.com/co-stuff/posts).
 
-## Libraries
-
-- [MinHook](https://github.com/TsudaKageyu/minhook) (included)
-- [ImGui](https://github.com/ocornut/imgui) (included)
-
+Uses [MinHook](https://github.com/TsudaKageyu/minhook) and [ImGui](https://github.com/ocornut/imgui), both included.
