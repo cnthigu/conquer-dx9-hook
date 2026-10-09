@@ -14,7 +14,13 @@ The overlay includes Always Jump, Wireframe/Chams, and string modification. For 
 
 ## Building
 
-Build the solution in Release / x86. Output: `Release/Chat.dll`.
+Requires Visual Studio 2022 and [vcpkg](https://github.com/microsoft/vcpkg) (`VCPKG_ROOT` set, or `vcpkg integrate install`). MinHook and ImGui are restored from `vcpkg.json` on the first build.
+
+```
+msbuild conquer_dx9_hook.sln /p:Configuration=Release /p:Platform=x86
+```
+
+Output: `build/bin/Win32/Release/Chat.dll`.
 
 ## Usage
 
@@ -30,4 +36,4 @@ For other versions, remove the proxy code from `src/hooks/proxy.cpp` and `src/dl
 
 Based on examples and concepts from [co-stuff/posts](https://github.com/co-stuff/posts).
 
-Uses [MinHook](https://github.com/TsudaKageyu/minhook) and [ImGui](https://github.com/ocornut/imgui), both included.
+Uses [MinHook](https://github.com/TsudaKageyu/minhook) and [ImGui](https://github.com/ocornut/imgui), restored through vcpkg.
